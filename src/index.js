@@ -25,7 +25,7 @@ app.use(express.json());
 
 //Rutas
 app.get('/', (req,res)=>{
-    res.json({'message':"Hola mundo"})
+    res.render('index');
 });
 
 //Archivos publicos
