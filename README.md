@@ -9,9 +9,9 @@ Una ves clonado el repositorio hay que instalar:
     express-handlebars
     morgan
     mysql2
-
+POR LO QUE HAY QUE EJECUTAR EL SIGUIENTE COMANDO:
 copien sin las "" en la terminal del proyecto
-    "npm i express express-handlebars morgan mysql2"
+    "npm i "
 
 Una ves instalado los modulos hay que asegurarse de que en
 archivo package.json este en el apartado de scripts el comando
