@@ -645,21 +645,11 @@ video {
   display: none;
 }
 
-.h-6 {
-  height: 1.5rem;
-}
-
-.h-60 {
-  height: 15rem;
-}
 
 .min-h-screen {
   min-height: 100vh;
 }
 
-.w-6 {
-  width: 1.5rem;
-}
 
 .w-full {
   width: 100%;
@@ -681,9 +671,6 @@ video {
   place-content: center;
 }
 
-.items-end {
-  align-items: flex-end;
-}
 
 .items-center {
   align-items: center;
@@ -864,9 +851,7 @@ video {
   font-style: italic;
 }
 
-.text-customGradientEnd {
-  --tw-text-opacity: 1;
-  color: rgb(69 99 97 / var(--tw-text-opacity, 1));
+
 }
 
 .text-gray-800 {
@@ -895,6 +880,10 @@ video {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.filter {
+  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+}
+
 .filter-none {
   filter: none;
 }
@@ -905,26 +894,6 @@ video {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
-}
-
-@font-face {
-  font-family: 'Cutive';
-
-  src: url('/fonts/Cutive-Regular.ttf') format("truetype");
-
-  font-weight: 400;
-
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Galada';
-
-  src: url('/fonts/Galada-Regular.ttf') format("truetype");
-
-  font-weight: 400;
-
-  font-style: normal;
 }
 
 .hover\:bg-blue-700:hover {

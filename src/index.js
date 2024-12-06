@@ -10,6 +10,8 @@ import principal from './routes/principal.js'
 // Inicializacion
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url))
+const IMAGES_FOLDER = join(__dirname, "public", "uploads");
+export { __dirname, IMAGES_FOLDER };
 
 // Configuraion
 app.set('port', process.env.PORT || 3000);
