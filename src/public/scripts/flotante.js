@@ -11,9 +11,6 @@ openModal.addEventListener('click', () => {
 closeModal.addEventListener('click', () => {
     modal.classList.add('hidden');
     background.classList.remove('blur-md');
-    if (window.location.pathname === '/login') {
-        window.history.pushState({ path: '/' }, '', '/');
-    }
 });
 
 modal.addEventListener('click', (e) => {
@@ -23,7 +20,32 @@ modal.addEventListener('click', (e) => {
     }
 });
 
-if (window.location.pathname === '/login') {
-    modal.classList.remove('hidden');
-    background.classList.add('blur-md');
-}
+document.querySelector('form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+
+    if (!username || !password) {
+        alert('Por favor, completa todos los campos.');
+        return;
+    }
+
+    try {
+        const response = await fetch('/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password }),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            alert(errorData.error || 'Error en el inicio de sesión');
+        } else {
+            alert('Inicio de sesión exitoso');
+            window.location.href = '/mantenimiento';
+        }
+    } catch (error) {
+        alert('Error al conectar con el servidor');
+    }
+});
