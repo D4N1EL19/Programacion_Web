@@ -15,10 +15,12 @@ copien sin las "" en la terminal del proyecto
 
 Una ves instalado los modulos hay que asegurarse de que en
 archivo package.json este en el apartado de scripts el comando
-    "dev": "nodemon ./src/index.js"
+    "dev": "nodemon ./src/index.js",
+    "build:css": "npx tailwindcss -i ./src/public/css/tailwind.css -o ./src/public/css/output.css --watch",
+    "start": "concurrently \"npm run dev\" \"npm run build:css\""
 
 Ahora si para usar l pagina en la terminal usen el comando
-    "npm dev run"
+    "npm run start"
 
 y podran ingresar desde cualqueir navegador web:
     localhost:3000
