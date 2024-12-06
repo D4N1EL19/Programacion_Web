@@ -6,7 +6,7 @@
       <!-- Contenedor principal centrado -->
       <div class="flex flex-col lg:flex-row items-center justify-center text-center lg:text-left">
         <!-- Texto -->
-        <p class="text-lg max-w-3xl mb-6 lg:mb-0 lg:mr-6">
+        <p class="text-lg font-Cutive max-w-3xl mb-6 lg:mb-0 lg:mr-6">
           Bienvenido a Sistema Parroquial, un sistema Online diseñado para gestionar información de la parroquia, facilitando la recuperación de datos relacionados con eventos religiosos, sacramentos, etc.
         </p>
         <!-- Imagen -->
@@ -22,35 +22,58 @@
     <div class="flex flex-col lg:flex-row-reverse items-center justify-center text-center lg:text-left">
       <!-- Texto -->
       <div class="lg:mr-6">
-        <h2 class="text-3xl font-bold mb-6">Beneficios</h2>
-        <p class="text-lg max-w-3xl">
+        <h2 class="text-3xl font-bold mb-6 font-Galada">Beneficios</h2>
+        <p class="text-lg max-w-3xl font-Cutive">
           Los datos son guardados en la nube, por lo que el cambio de dispositivo y el respaldo de datos no son un problema. 
           Contamos con migración de datos para accesos y auto-rellenado de campos para la facilitación de registro de actas, 
           junto a un filtro avanzado para la búsqueda de actas.
         </p>
       </div>
       <!-- Imagen -->
-      <img src="/img/ventanal_de_beneficios.jpg" alt="Vitral" class="w-36 h-37">
+      <img src="/Img/ventanal_de_beneficios.jpg" alt="Vitral" class="w-36 h-37">
     </div>
   </div>
 </section>
 
 
-    <h1>PAQUETESSSSSS</h1>
-    <section class="text-center">
-      {{#if paquetes}}
-        {{#each paquetes}}
-          <div>
-            <img src="" alt="LOGO DEL PAQUETE">
-            <p>{{plazo}}</p>
-            <p>{{precio}}</p>
-            <p>{{meses}}</p>
-          </div>
-        {{/each}}
-      {{else}}
-        <h2>NO HAY PAQUETES AGREGALOOOOSOSSS</h2>
-      {{/if}}
-    </section>
+    <!-- Paquetes -->
+
+  <section class="py-12 bg-white">
+    <div class="container mx-auto text-center">
+      <h2 class="text-3xl font-bold font-Galada mb-8">Paquetes</h2>
+    {{#if paquetes}}
+      {{#each paquetes}}
+        <div>
+      <!-- Mensual -->
+      <div class="py-12 bg-white p-6 rounded-lg shadow-md">
+        <img src="/Img/ventanal_redondo_paloma.png" alt="Vitral" class="mx-auto mb-4">
+        <h3 class="text-xl font-bold">{{plazo}}</h3>
+        <p class="text-gray-600 mt-2">Si contratas hoy tu próxima fecha de pago será</p>
+        <p class="text-lg font-bold mt-2">{{meses}}</p>
+        <p class="text-2xl font-bold mt-4">{{precio}}</p>
+      </div>
+      <!-- Trimestral -->
+      <div class="py-12 bg-white p-6 rounded-lg shadow-md">
+        <img src="/Img/ventanal_redondo_paloma.png" alt="Vitral" class="mx-auto mb-4">
+        <h3 class="text-xl font-bold">{{plazo}}</h3>
+        <p class="text-gray-600 mt-2">Si contratas hoy tu próxima fecha de pago será</p>
+        <p class="text-lg font-bold mt-2">0{{meses}}</p>
+        <p class="text-2xl font-bold mt-4">{{precio}}</p>
+      </div>
+      <!-- Semestral -->
+      <div class="py-12 bg-white p-6 rounded-lg shadow-md">
+        <img src="/Img/ventanal_redondo_paloma.png" alt="Vitral" class="mx-auto mb-4">
+        <h3 class="text-xl font-bold">{{plazo}}</h3>
+        <p class="text-gray-600 mt-2">Si contratas hoy tu próxima fecha de pago será</p>
+        <p class="text-lg font-bold mt-2">{{meses}}</p>
+        <p class="text-2xl font-bold mt-4">{{precio}}</p>
+        </div>
+      </div>
+      {{/each}}
+    {{else}}
+      <h2 class=" font-Cutive mb-8">Por el momento no tenemos disponible nuestro sistema para contrataciones</h2>
+    {{/if}}
+  </section>
 
     <h1>NOTICIASSSSS</h1>
     <section class="text-center">
