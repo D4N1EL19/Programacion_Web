@@ -47,7 +47,7 @@
             <img src="/Img/ventanal_redondo_paloma.png" alt="Vitral" class="mx-auto mb-4">
             <h3 class="text-xl font-bold font-Galada">{{Plazo}}</h3>
             <p class="text-gray-600 mt-2 font-Cutive">Si contratas hoy tu próxima fecha de pago será</p>
-            <p class="text-lg font-bold mt-2 font-Cutive">{{Meses}}</p>
+            <p class="text-lg font-bold mt-2 font-Cutive" data-plazo="{{Plazo}}">Calculando...</p>
             <p class="text-2xl font-bold mt-4">${{Precio}}.00 pesos</p>
           </div>
         {{/each}}
@@ -57,6 +57,44 @@
     {{/if}}
   </div>
 </section>
+
+<script>
+  // Función para calcular la fecha de vencimiento
+  function calcularFechaVencimiento(plazo) {
+    const fechaActual = new Date();
+    let meses = 0;
+
+    // Determinar los meses a agregar según el plazo
+    switch (plazo.toLowerCase()) {
+      case '1':
+        meses = 1;
+        break;
+      case '3':
+        meses = 3;
+        break;
+      case '6':
+        meses = 6;
+        break;
+      case '12':
+        meses = 12;
+        break;
+      default:
+        return 'Plazo no definido';
+    }
+
+    // Sumar los meses al mes actual
+    fechaActual.setMonth(fechaActual.getMonth() + meses);
+    return fechaActual.toLocaleDateString(); // Formato de fecha (dd/mm/yyyy)
+  }
+
+  // Obtener todos los elementos con el atributo data-plazo
+  document.querySelectorAll('[data-plazo]').forEach((elemento) => {
+    const plazo = elemento.getAttribute('data-plazo');
+    const fechaVencimiento = calcularFechaVencimiento(plazo);
+    elemento.textContent = fechaVencimiento; // Actualizar el contenido del elemento
+  });
+</script>
+
 
 
     <h1>NOTICIASSSSS</h1>
@@ -99,12 +137,12 @@
   <!-- Cita -->
   <section class="py-6 bg-white text-center">
     <div class="container mx-auto">
-      <blockquote class="italic text-lg">
+      <blockquote class="italic font-Cutive text-lg">
         "Amarás al Señor tu Dios con todo tu corazón, con toda tu alma y con toda tu mente. 
         Este es el primero y el más grande mandamiento. El segundo, semejante a este, es: 
         Amarás a tu prójimo como a ti mismo."
       </blockquote>
-      <cite class="block mt-4 text-gray-600">— Mateo 22:37-39</cite>
+      <cite class="block mt-4 font-Galada text-gray-600">— Mateo 22:37-39</cite>
     </div>
   </section>
 
