@@ -588,10 +588,6 @@ video {
   }
 }
 
-.static {
-  position: static;
-}
-
 .fixed {
   position: fixed;
 }
@@ -653,8 +649,8 @@ video {
   height: 15rem;
 }
 
-.min-h-screen {
-  min-height: 100vh;
+.w-36 {
+  width: 9rem;
 }
 
 .w-6 {
@@ -665,8 +661,8 @@ video {
   width: 100%;
 }
 
-.w-36 {
-  width: 9rem;
+.max-w-3xl {
+  max-width: 48rem;
 }
 
 .max-w-lg {
@@ -675,10 +671,6 @@ video {
 
 .max-w-md {
   max-width: 28rem;
-}
-
-.max-w-3xl {
-  max-width: 48rem;
 }
 
 .flex-col {
@@ -738,11 +730,6 @@ video {
   background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
 }
 
-.bg-blue-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(37 99 235 / var(--tw-bg-opacity, 1));
-}
-
 .bg-gray-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
@@ -751,6 +738,11 @@ video {
 .bg-gray-200 {
   --tw-bg-opacity: 1;
   background-color: rgb(229 231 235 / var(--tw-bg-opacity, 1));
+}
+
+.bg-lightButton {
+  --tw-bg-opacity: 1;
+  background-color: rgb(202 235 226 / var(--tw-bg-opacity, 1));
 }
 
 .bg-transparent {
@@ -813,24 +805,19 @@ video {
   padding-bottom: 2.5rem;
 }
 
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
 
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
-}
-
-.py-12 {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
 }
 
 .text-left {
@@ -841,9 +828,22 @@ video {
   text-align: center;
 }
 
+.font-Cutive {
+  font-family: Cutive, sans-serif;
+}
+
+.font-Galada {
+  font-family: Galada, sans-serif;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .text-4xl {
@@ -859,11 +859,6 @@ video {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
 }
 
 .font-bold {
@@ -908,19 +903,6 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.blur-md {
-  --tw-blur: blur(12px);
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.filter {
-  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
-}
-
-.filter-none {
-  filter: none;
-}
-
 .transition {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
@@ -932,7 +914,9 @@ video {
 @font-face {
   font-family: 'Cutive';
 
-  src: url('/fonts/Cutive-Regular.ttf') format("truetype");
+  src: url('/fonts/Cutive-Regular.ttf') format("truetype"),
+         url('/fonts/Cutive-Regular.woff') format('woff'),
+         url('/fonts/Cutive-Regular.woff2') format('woff2');
 
   font-weight: 400;
 
@@ -942,16 +926,13 @@ video {
 @font-face {
   font-family: 'Galada';
 
-  src: url('/fonts/Galada-Regular.ttf') format("truetype");
+  src: url('/fonts/Galada-Regular.ttf') format("truetype"),
+         url('/fonts/Galada-Regular.woff') format('woff'),
+         url('/fonts/Galada-Regular.woff2') format('woff2');
 
   font-weight: 400;
 
   font-style: normal;
-}
-
-.hover\:bg-blue-700:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(29 78 216 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:bg-gray-200:hover {
@@ -962,6 +943,11 @@ video {
 .hover\:bg-gray-300:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(209 213 219 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-lightButton:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(202 235 226 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:text-white:hover {
