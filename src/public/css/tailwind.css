@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+    font-family: 'Cutive';
+    src: url('/fonts/Cutive-Regular.ttf') format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Galada';
+    src: url('/fonts/Galada-Regular.ttf') format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
