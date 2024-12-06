@@ -11,6 +11,9 @@ openModal.addEventListener('click', () => {
 closeModal.addEventListener('click', () => {
     modal.classList.add('hidden');
     background.classList.remove('blur-md');
+    if (window.location.pathname === '/login') {
+        window.history.pushState({ path: '/' }, '', '/');
+    }
 });
 
 modal.addEventListener('click', (e) => {
@@ -19,3 +22,8 @@ modal.addEventListener('click', (e) => {
     background.classList.remove('blur-md');
     }
 });
+
+if (window.location.pathname === '/login') {
+    modal.classList.remove('hidden');
+    background.classList.add('blur-md');
+}

@@ -1,5 +1,6 @@
 import express from 'express'
 import { engine } from 'express-handlebars';
+import session from 'express-session';
 import morgan from 'morgan';
 import {join,dirname} from 'path'
 import { fileURLToPath } from 'url';
@@ -22,6 +23,16 @@ app.engine(".hbs", engine({
 app.set('view engine', '.hbs');
 
 // Middlewares
+app.use(session({
+    secret: "e16b7c6a03f728b8c3d215fdacbd9f92c4ad3a6760f1d282832bf312bb3d9a85",
+    resave: false,
+    saveUninitialized: false, 
+    cookie: {
+      secure: false,
+      maxAge: 1000 * 60 * 60,
+    },
+  })
+);
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
