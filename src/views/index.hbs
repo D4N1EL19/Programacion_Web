@@ -36,44 +36,27 @@
 </section>
 
 
-    <!-- Paquetes -->
-
-  <section class="py-12 bg-white">
-    <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold font-Galada mb-8">Paquetes</h2>
+<section class="py-12 bg-white">
+  <div class="container mx-auto text-center">
+    <h2 class="text-3xl font-bold font-Galada mb-8">Paquetes</h2>
     {{#if paquetes}}
-      {{#each paquetes}}
-        <div>
-      <!-- Mensual -->
-      <div class="py-12 bg-white p-6 rounded-lg shadow-md">
-        <img src="/Img/ventanal_redondo_paloma.png" alt="Vitral" class="mx-auto mb-4">
-        <h3 class="text-xl font-bold">{{plazo}}</h3>
-        <p class="text-gray-600 mt-2">Si contratas hoy tu próxima fecha de pago será</p>
-        <p class="text-lg font-bold mt-2">{{meses}}</p>
-        <p class="text-2xl font-bold mt-4">{{precio}}</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {{#each paquetes}}
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <img src="/Img/ventanal_redondo_paloma.png" alt="Vitral" class="mx-auto mb-4">
+            <h3 class="text-xl font-bold font-Galada">{{Plazo}}</h3>
+            <p class="text-gray-600 mt-2 font-Cutive">Si contratas hoy tu próxima fecha de pago será</p>
+            <p class="text-lg font-bold mt-2 font-Cutive">{{Meses}}</p>
+            <p class="text-2xl font-bold mt-4">${{Precio}}.00 pesos</p>
+          </div>
+        {{/each}}
       </div>
-      <!-- Trimestral -->
-      <div class="py-12 bg-white p-6 rounded-lg shadow-md">
-        <img src="/Img/ventanal_redondo_paloma.png" alt="Vitral" class="mx-auto mb-4">
-        <h3 class="text-xl font-bold">{{plazo}}</h3>
-        <p class="text-gray-600 mt-2">Si contratas hoy tu próxima fecha de pago será</p>
-        <p class="text-lg font-bold mt-2">0{{meses}}</p>
-        <p class="text-2xl font-bold mt-4">{{precio}}</p>
-      </div>
-      <!-- Semestral -->
-      <div class="py-12 bg-white p-6 rounded-lg shadow-md">
-        <img src="/Img/ventanal_redondo_paloma.png" alt="Vitral" class="mx-auto mb-4">
-        <h3 class="text-xl font-bold">{{plazo}}</h3>
-        <p class="text-gray-600 mt-2">Si contratas hoy tu próxima fecha de pago será</p>
-        <p class="text-lg font-bold mt-2">{{meses}}</p>
-        <p class="text-2xl font-bold mt-4">{{precio}}</p>
-        </div>
-      </div>
-      {{/each}}
     {{else}}
-      <h2 class=" font-Cutive mb-8">Por el momento no tenemos disponible nuestro sistema para contrataciones</h2>
+      <h2 class="font-Cutive mb-8">Por el momento no tenemos disponible nuestro sistema para contrataciones</h2>
     {{/if}}
-  </section>
+  </div>
+</section>
+
 
     <h1>NOTICIASSSSS</h1>
     <section class="text-center">
@@ -90,6 +73,39 @@
         <h2>NO HAY NOTICIAS PINCHE CHISMOSO</h2>
       {{/if}}
     </section>
+
+      <!-- Noticias -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-6">Noticias</h2>
+      <div class="space-y-6">
+        <div class="bg-gradient-to-r from-customGradientStart to-customGradientEnd text-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-bold">La Iglesia católica estrecha lazos con el Gobierno de Sheinbaum</h3>
+          <p class="text-sm text-gray-600 mt-2">Publicado el 2024-12-06</p>
+        </div>
+        <div class="bg-gradient-to-r from-customGradientStart to-customGradientEnd text-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-bold">El Vaticano recurre a la IA para crear una nueva experiencia religiosa</h3>
+          <p class="text-white text-sm text-gray-600 mt-2">Publicado el 2024-12-06</p>
+        </div>
+        <div class="bg-gradient-to-r from-customGradientStart to-customGradientEnd text-white p-6 rounded-lg shadow-md">
+          <h3 class="text-lg font-bold">Primera condena por pederastia contra un monje de Montserrat</h3>
+          <p class="text-white text-sm text-gray-600 mt-2">Publicado el 2024-12-06</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cita -->
+  <section class="py-6 bg-white text-center">
+    <div class="container mx-auto">
+      <blockquote class="italic text-lg">
+        "Amarás al Señor tu Dios con todo tu corazón, con toda tu alma y con toda tu mente. 
+        Este es el primero y el más grande mandamiento. El segundo, semejante a este, es: 
+        Amarás a tu prójimo como a ti mismo."
+      </blockquote>
+      <cite class="block mt-4 text-gray-600">— Mateo 22:37-39</cite>
+    </div>
+  </section>
 
     <script src="/scripts/flotante.js"></script>
   </main>
