@@ -6,7 +6,12 @@ export default {
     './src/**/*.js',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        customGradientStart: '#91D5C9',
+        customGradientEnd: '#456361',
+      },
+    },
   },
   plugins: [],
 }
