@@ -16,6 +16,28 @@
             <button type="submit">Enviar</button>
         </form>
     </div >
+      <!-- Contenedor principal -->
+  <div class="w-full max-w-4xl mt-6 p-6 bg-white rounded-lg shadow-md">
+    <!-- Sección de encabezado -->
+    <div class="flex justify-between items-center">
+      <button class="text-xl font-bold text-gray-600">
+        &#x2190;
+      </button>
+      <button class="bg-customGradientEnd text-white font-semibold py-2 px-6 rounded-lg hover:bg-teal-600">
+        Agregar
+      </button>
+    </div>
+    <!-- Tarjeta principal -->
+    <div class="mt-6 bg-gradient-to-r from-customGradientStart to-customGradientEnd p-6 rounded-lg text-center">
+      <div class="flex flex-col justify-center items-center">
+        <div class="bg-gray-100 rounded-lg w-16 h-16 flex items-center justify-center shadow-md">
+          <span class="text-xl font-bold text-gray-600">+</span>
+        </div>
+        <p class="mt-4 text-lg font-semibold text-gray-700">Introduce noticia</p>
+        <p class="text-sm text-gray-500 mt-1">Introduce imagen de referencia</p>
+        <p class="text-xs text-gray-400 mt-1">Crédito del autor</p>
+      </div>
+    </div>
 
     <div class="text-center max-w-lg bg-white shadow-lg rounded-lg p-8 m-8">
         {{#each paquetes}}
@@ -35,3 +57,42 @@
         {{/each}}
     </div>
 </main>
+
+ <!-- Sección de paquetes -->
+    <div class="grid grid-cols-3 gap-4 mt-6">
+      <!-- Paquete 1 -->
+      <div class="bg-gradient-to-r from-customGradientEnd to-customGradientStart p-4 rounded-lg shadow-md text-center">
+        <h3 class="text-lg font-semibold text-white">Paquete 1</h3>
+        <p class="text-sm text-white mt-2">Periodo</p>
+        <input type="text" placeholder="Mensualmente" class="w-full mt-2 p-2 rounded-md focus:outline-none text-gray-700">
+        <p class="text-sm text-white mt-2">Precio</p>
+        <input type="text" placeholder="$$$$" class="w-full mt-2 p-2 rounded-md focus:outline-none text-gray-700">
+        <button class="bg-customGradientEnd text-white font-semibold py-2 px-4 mt-4 rounded-lg hover:bg-teal-800">
+          Agregar
+        </button>
+      </div>
+      <!-- Paquete 2 -->
+      <div class="bg-gradient-to-r from-customGradientEnd to-customGradientStart p-4 rounded-lg shadow-md text-center">
+        <h3 class="text-lg font-semibold text-white">Paquete 2</h3>
+        <p class="text-sm text-white mt-2">Periodo</p>
+        <input type="text" placeholder="Trimestralmente" class="w-full mt-2 p-2 rounded-md focus:outline-none text-gray-700">
+        <p class="text-sm text-white mt-2">Precio</p>
+        <input type="text" placeholder="$$$$" class="w-full mt-2 p-2 rounded-md focus:outline-none text-gray-700">
+        <button class="bg-customGradientEnd text-white font-semibold py-2 px-4 mt-4 rounded-lg hover:bg-teal-800">
+          Agregar
+        </button>
+      </div>
+      <!-- Paquete 3 -->
+      <div class="bg-gradient-to-r from-customGradientEnd to-customGradientStart p-4 rounded-lg shadow-md text-center">
+        <h3 class="text-lg font-semibold text-white">Paquete 3</h3>
+        <p class="text-sm text-white mt-2">Periodo</p>
+        <input type="text" placeholder="Semestralmente" class="w-full mt-2 p-2 rounded-md focus:outline-none text-gray-700">
+        <p class="text-sm text-white mt-2">Precio</p>
+        <input type="text" placeholder="$$$$" class="w-full mt-2 p-2 rounded-md focus:outline-none text-gray-700">
+        <button class="bg-customGradientEnd text-white font-semibold py-2 px-4 mt-4 rounded-lg hover:bg-teal-800">
+          Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+</body>
