@@ -87,43 +87,35 @@
 
 
 
-
-    <h1>NOTICIASSSSS</h1>
-    <section class="text-center">
-      {{#if noticias}}q
-        {{#each noticias}}
-          <div>
-            <img src="" alt="LOGO DEL PAQUETE">
-            <p>{{Foto}}</p>
-            <p>{{Contenido}}</p>
-            <p>{{Link}}</p>
-          </div>
-        {{/each}}
-      {{else}}
-        <h2>NO HAY NOTICIAS PINCHE CHISMOSO</h2>
-      {{/if}}
-    </section>
-
-      <!-- Noticias -->
-  <section class="py-12 bg-white">
-    <div class="container mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-6">Noticias</h2>
-      <div class="space-y-6">
-        <div class="bg-gradient-to-r from-customGradientStart to-customGradientEnd text-white p-6 rounded-lg shadow-md">
-          <h3 class="text-lg font-bold">La Iglesia católica estrecha lazos con el Gobierno de Sheinbaum</h3>
-          <p class="text-sm text-gray-600 mt-2">Publicado el 2024-12-06</p>
+<!-- Noticias -->
+<section class="py-12 bg-white">
+  <div class="container mx-auto">
+    <h2 class="text-3xl font-bold font-Galada text-center mb-6">Noticias</h2>
+    {{#if noticias}}
+      {{#each noticias}}
+      <div class="bg-gradient-to-r from-customGradientStart to-customGradientEnd text-white p-6 rounded-lg shadow-md flex items-center h-200  gap-4 mb-6">
+        <!-- Imagen -->
+        <div class="w-1/3 ">
+          <img src="/uploads/{{Foto}}" alt="Noticia" 
+               class="rounded-lg w-full h-auto max-h-24 object-cover">
         </div>
-        <div class="bg-gradient-to-r from-customGradientStart to-customGradientEnd text-white p-6 rounded-lg shadow-md">
-          <h3 class="text-lg font-bold">El Vaticano recurre a la IA para crear una nueva experiencia religiosa</h3>
-          <p class="text-white text-sm mt-2">Publicado el 2024-12-06</p>
-        </div>
-        <div class="bg-gradient-to-r from-customGradientStart to-customGradientEnd text-white p-6 rounded-lg shadow-md">
-          <h3 class="text-lg font-bold">Primera condena por pederastia contra un monje de Montserrat</h3>
-          <p class="text-white text-sm mt-2">Publicado el 2024-12-06</p>
+        <!-- Contenido y link -->
+        <div class="w-2/3 flex flex-col justify-center">
+          <!-- Texto centrado -->
+          <h3 class="text-lg font-Galada text-center mb-4">{{Contenido}}</h3>
+          <!-- Link alineado abajo y a la derecha -->
+          <p class="text-white text-sm italic font-Cutive  text-right mt-auto">{{Link}}</p>
         </div>
       </div>
-    </div>
-  </section>
+      {{/each}}
+    {{else}}
+      <h2 class="text-center font-bold text-red-600">NO HAY NOTICIAS AÚN</h2>
+    {{/if}}
+  </div>
+</section>
+
+
+
 
   <!-- Cita -->
   <section class="py-6 bg-white text-center">
