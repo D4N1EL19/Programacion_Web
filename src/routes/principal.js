@@ -33,12 +33,12 @@ router.post("/login", (req, res) => {
 });
 
 router.get("/mantenimiento", isAuthenticated, (req, res) => {
-    res.render("manteniminento", {layout: "mantenimiento"})
+    res.render("partials/mantenimineto", {layout: "mantenimiento"})
 });
 
 router.post("/logout", (req, res) => {
     req.session.destroy(() => {
-      res.redirect("/login");
+      res.redirect("/");
     });
 });
 
