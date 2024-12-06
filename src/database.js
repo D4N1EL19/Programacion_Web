@@ -7,3 +7,5 @@ const pool = createPool({
     password: 'AstraGC2024',
     database: 'Diocesis'
 });
+
+export default pool.promise();
