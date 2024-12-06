@@ -122,14 +122,63 @@ router.post("/uploadImage", upload.single("file"), async(req, res)=>{
     }
 });
 
+router.get('/listUser', async (req, res) => {
+  try {
+    const { user } = req.body;
+
+    if (!user) {
+      return res.status(400).json({ message: 'El usuario no fue proporcionado en la solicitud.' });
+    }
+    const [result] = await pool.query('SELECT Usuario FROM Usuarios WHERE Usuario = ?', [user]);
+
+    if (result.length > 0) {
+      res.json({ exists: true, message: 'El usuario ya está registrado.' });
+    } else {
+      res.json({ exists: false, message: 'El usuario no está registrado.' });
+    }
+  } catch (err) {
+    res.status(500).json({ message: 'Error interno del servidor.', error: err.message });
+  }
+});
+
+const calcularFechaPago = (paquete) => {
+  const hoy = new Date();
+  let mesesSumar = 0;
+
+  switch (paquete.toLowerCase()) {
+    case 'paquete mensual':
+      mesesSumar = 1;
+      break;
+    case 'paquete trimestral':
+      mesesSumar = 3;
+      break;
+    case 'paquete semestral':
+      mesesSumar = 6;
+      break;
+    default:
+      throw new Error('Paquete no válido');
+  }
+
+  hoy.setMonth(hoy.getMonth() + mesesSumar);
+
+  const dia = String(hoy.getDate()).padStart(2, '0');
+  const mes = String(hoy.getMonth() + 1).padStart(2, '0'); 
+  const anio = hoy.getFullYear();
+
+  return `${dia}/${mes}/${anio}`;
+};
+
+
 router.post('/agregarSuscripcion', async (req, res) => {
   try {
     const { 
-      nombres, apellidos, user, diocesis,
-      password, direccion, fecha_pago
+      nombre, apellidos, user, diocesis,
+      passwordU, direccion, paquete
     } = req.body;
 
-    const [rows] = await pool.query('SELECT ID FROM Comunidades WHERE Nombre = ?', [diocesis]);
+    const nombreDiocesis = diocesis.replace("Diocesis de ", "").trim();
+
+    const [rows] = await pool.query('SELECT ID FROM Comunidades WHERE Nombre = ?', [nombreDiocesis]);
     if (rows.length === 0) {
       return res.status(404).json({ 
         success: false, 
@@ -150,8 +199,9 @@ router.post('/agregarSuscripcion', async (req, res) => {
     const [result] = await pool.query('INSERT INTO Parroquias SET ?', [nuevaParroquia]);
     const lastInsertId = result.insertId;
 
-    const nombreCompleto = nombres + " " + apellidos; 
-    const pass = PasswordHasher.hashPassword(password); 
+    const nombreCompleto = nombre + " " + apellidos; 
+    const pass = PasswordHasher.hashPassword(passwordU);
+    const fecha_pago = calcularFechaPago(paquete);
 
     const nuevoUsuario = {
       ID_Parroquia: lastInsertId,
@@ -165,10 +215,9 @@ router.post('/agregarSuscripcion', async (req, res) => {
     await pool.query('INSERT INTO Usuarios SET ?', [nuevoUsuario]);
 
     res.json({ 
-      message: "Formulario procesado correctamente. Suscripción subida.", 
       success: true, 
-      usuarioID: result.insertId,
-      parroquiaID: lastInsertId
+      message: 'Suscripción agregada correctamente',
+      redirect: '/'
     });
   } catch (error) {
     console.error('Error en la suscripción:', error);

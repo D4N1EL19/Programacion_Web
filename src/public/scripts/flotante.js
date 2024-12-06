@@ -59,22 +59,22 @@ function limpiarFormulario() {
 }
 
 function validarFormulario(event) {
-    const inputs = document.querySelectorAll('form input, form select');
+    const form = event.target; 
+    const inputs = form.querySelectorAll('input, select');
   
     let esValido = true;
     let mensajeError = '';
-    let password = '';
-    let confirmarPassword = '';
+
   
     inputs.forEach(input => {
-        esValido = true;
-        input.style.borderColor = ''; 
+        input.style.borderColor = '';
 
         if (input.tagName.toLowerCase() === 'input') {
+            // Verificar si el campo está vacío
             if (input.value.trim() === '') {
-            esValido = false;
-            mensajeError = 'Por favor, complete todos los campos.';
-            input.style.borderColor = 'red'; 
+                esValido = false;
+                mensajeError = 'Por favor, complete todos los campos.';
+                input.style.borderColor = 'red'; 
             }
         }
 
@@ -96,21 +96,21 @@ function validarFormulario(event) {
             input.style.borderColor = 'red';
         }
     
-        if (input.name === 'password') {
+        if (input.name === 'passwordU') {
             password = input.value;
             if (input.value.length < 8) {
-            esValido = false;
-            mensajeError = 'La contraseña debe tener al menos 8 caracteres.';
-            input.style.borderColor = 'red'; 
+                esValido = false;
+                mensajeError = 'La contraseña debe tener al menos 8 caracteres.';
+                input.style.borderColor = 'red'; 
             }
         }
     
         if (input.name === 'confirmPassword') {
             confirmarPassword = input.value;
             if (confirmarPassword && confirmarPassword !== password) {
-            esValido = false;
-            mensajeError = 'Las contraseñas no coinciden.';
-            input.style.borderColor = 'red'; 
+                esValido = false;
+                mensajeError = 'Las contraseñas no coinciden.';
+                input.style.borderColor = 'red'; 
             }
         }
 
@@ -124,17 +124,41 @@ function validarFormulario(event) {
                 input.style.borderColor = 'red';
             }
         }
-
-        input.addEventListener('focus', () => {
-            input.style.borderColor = '';
-        });
     });
   
     if (!esValido) {
-      event.preventDefault();
-      alert(mensajeError);
+        event.preventDefault();
+        alert(mensajeError);
+    } else {
+        event.preventDefault(); 
+
+        const formData = new FormData(form);
+        const formValues = Object.fromEntries(formData.entries());
+        console.log(formValues);
+
+        fetch('/agregarSuscripcion', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formValues)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                window.location.href = data.redirect;
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            alert('Hubo un problema al procesar la solicitud.');
+        });
     }
-  }
+}
+
   
 
 
