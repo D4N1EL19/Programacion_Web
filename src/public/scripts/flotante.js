@@ -2,6 +2,14 @@ const openModal = document.getElementById('open-modal');
 const closeModal = document.getElementById('close-modal');
 const modal = document.getElementById('modal');
 const background = document.getElementById('background');
+const subscribeButton = document.getElementById('subscribe-btn');
+const subscriptionForm = document.getElementById('subscription-cont');
+
+subscribeButton.addEventListener('click', () => {
+    subscriptionForm.classList.remove('hidden');
+    subscriptionForm.classList.add('flex');
+  });
+
 
 openModal.addEventListener('click', () => {
     modal.classList.remove('hidden');
