@@ -32,14 +32,25 @@ router.post("/login", (req, res) => {
     res.status(401).send("Credenciales inválidas");
 });
 
-router.get("/mantenimiento", isAuthenticated, (req, res) => {
-    res.render("partials/mantenimineto", {layout: "mantenimiento"})
-});
-
 router.post("/logout", (req, res) => {
     req.session.destroy(() => {
       res.redirect("/");
     });
+});
+
+router.get("/mantenimiento", isAuthenticated, (req, res) => {
+    res.render("partials/mantenimineto", {layout: "mantenimiento"})
+});
+
+router.post("/uploadImage", (req, res)=>{
+    const { descripcion, link } = req.body;
+    const archivo = req.file;
+
+    console.log("Nombre:", nombre);
+    console.log("Apellido:", apellido);
+    console.log("Archivo:", archivo);
+  
+    res.json({ message: "Formulario procesado correctamente" });
 });
 
 export default router
