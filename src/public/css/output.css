@@ -734,10 +734,6 @@ video {
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
-.flex-row {
-  flex-direction: row;
-}
-
 .flex-col {
   flex-direction: column;
 }
@@ -796,7 +792,13 @@ video {
   border-radius: 0.5rem;
 }
 
+.rounded {
+  border-radius: 0.25rem;
+}
 
+.rounded-xl {
+  border-radius: 0.75rem;
+}
 
 .border {
   border-width: 1px;
@@ -1135,7 +1137,13 @@ video {
     margin-right: 1.5rem;
   }
 
+  .lg\:mr-10 {
+    margin-right: 2.5rem;
+  }
 
+  .lg\:block {
+    display: block;
+  }
 
   .lg\:w-2\/3 {
     width: 66.666667%;
@@ -1149,23 +1157,9 @@ video {
     flex-direction: row-reverse;
   }
 
-  .lg\:flex-col {
-    flex-direction: column;
-  }
-
   .lg\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
-  }
-
-  .lg\:px-12 {
-    padding-left: 3rem;
-    padding-right: 3rem;
-  }
-
-  .lg\:px-10 {
-    padding-left: 2.5rem;
-    padding-right: 2.5rem;
   }
 
   .lg\:text-left {
