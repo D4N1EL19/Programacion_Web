@@ -46,8 +46,8 @@ router.post("/uploadImage", (req, res)=>{
     const { descripcion, link } = req.body;
     const archivo = req.file;
 
-    console.log("Nombre:", nombre);
-    console.log("Apellido:", apellido);
+    console.log("Nombre:", descripcion);
+    console.log("Apellido:", link);
     console.log("Archivo:", archivo);
   
     res.json({ message: "Formulario procesado correctamente" });
