@@ -6,47 +6,47 @@
 
     <div class="bg-gradient-to-r from-customGradientEnd to-customGradientStart p-8 rounded-lg shadow-lg w-full lg:w-2/3">
       <h2 class="text-white text-2xl lg:text-3xl font-semibold text-center mb-6">Registro de suscripción</h2>
-      <form class="space-y-4">
+      <form class="space-y-4" onsubmit="validarFormulario(event)">
         <!-- Primera fila -->
         <div class="flex flex-wrap -mx-2">
           <div class="w-1/4 px-2">
-            <input type="text" placeholder="Nombre" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200">
+            <input type="text" name="nombre" placeholder="Nombre" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200" autocomplete="off">
           </div>
           <div class="w-1/4 px-2">
-            <input type="text" placeholder="Usuario" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200">
+            <input type="text" name="user" placeholder="Usuario" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200" autocomplete="off">
           </div>
           <div class="w-1/2 px-2">
-            <input type="text" placeholder="Número de Tarjeta" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200">
+            <input type="number" name="numero_tarjeta" placeholder="Número de Tarjeta" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200" autocomplete="off">
           </div>
         </div>
 
         <!-- Segunda fila -->
         <div class="flex flex-wrap -mx-2">
           <div class="w-1/2 px-2">
-            <input type="text" placeholder="Apellidos" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200">
+            <input type="text" placeholder="Apellidos" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200" autocomplete="off">
           </div>
           <div class="w-1/4 px-2">
-            <input type="text" placeholder="CVV" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200">
+            <input type="number" name="cvv" placeholder="CVV" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200" autocomplete="off">
           </div>
           <div class="w-1/4 px-2">
-            <input type="text" placeholder="C.P" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200">
+            <input type="number" name="codigo_postal" placeholder="C.P" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200" autocomplete="off">
           </div>
         </div>
 
         <!-- Tercera fila -->
         <div class="flex flex-wrap -mx-2">
           <div class="w-1/2 px-2">
-            <input type="email" placeholder="Correo electrónico" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200">
+            <input type="email" placeholder="Correo electrónico" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200" autocomplete="off">
           </div>
           <div class="w-1/2 px-2">
-            <input type="password" placeholder="Dirección de Parroquia" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200">
+            <input type="text" placeholder="Dirección de Parroquia" class="w-full p-2 border rounded focus:border focus:outline-none focus:ring focus:ring-green-200" autocomplete="off">
           </div>
         </div>
 
         <!-- Cuarta fila -->
         <div class="flex flex-wrap -mx-2">
           <div class="w-1/2 px-2">
-            <input type="password" placeholder="Contraseña" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200">
+            <input type="password" name="password" placeholder="Contraseña" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200" autocomplete="off">
           </div>
           <div class="w-1/2 px-2">
             <select class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200">
@@ -61,7 +61,7 @@
         <!-- Quinta fila -->
         <div class="flex flex-wrap -mx-2">
           <div class="w-1/2 px-2">
-            <input type="text" placeholder="Confirmar Contraseña" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200">
+            <input type="password" name="confirmPassword" placeholder="Confirmar Contraseña" class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200">
           </div>
           <div class="w-1/2 px-2">
             <select class="w-full p-2 border rounded focus:outline-none focus:ring focus:ring-green-200">
@@ -76,7 +76,7 @@
         <!-- Botones -->
         <div class="flex justify-center space-x-4 mt-6">
           <button type="submit" class="bg-teal-300 text-white px-6 py-2 rounded-lg hover:bg-teal-400">Registrar</button>
-          <button type="button" class="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-400">Cancelar</button>
+          <button type="button" id="closeSuscripcion" class="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-400">Cancelar</button>
         </div>
       </form>
     </div>
