@@ -42,7 +42,6 @@ document.querySelector('form').addEventListener('submit', async (event) => {
             const errorData = await response.json();
             alert(errorData.error || 'Error en el inicio de sesión');
         } else {
-            alert('Inicio de sesión exitoso');
             window.location.href = '/mantenimiento';
         }
     } catch (error) {
