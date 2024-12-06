@@ -5,14 +5,18 @@
 
 @font-face {
     font-family: 'Cutive';
-    src: url('/fonts/Cutive-Regular.ttf') format("truetype");
+    src: url('/fonts/Cutive-Regular.ttf') format("truetype"),
+         url('/fonts/Cutive-Regular.woff') format('woff'),
+         url('/fonts/Cutive-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Galada';
-    src: url('/fonts/Galada-Regular.ttf') format("truetype");
+    src: url('/fonts/Galada-Regular.ttf') format("truetype"),
+         url('/fonts/Galada-Regular.woff') format('woff'),
+         url('/fonts/Galada-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
 }
