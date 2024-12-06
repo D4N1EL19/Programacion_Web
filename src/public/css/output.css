@@ -596,6 +596,10 @@ video {
   inset: 0px;
 }
 
+.m-8 {
+  margin: 2rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -697,13 +701,6 @@ video {
   max-width: 28rem;
 }
 
-.max-w-none {
-  max-width: none;
-}
-
-.grid-cols-1 {
-  grid-template-columns: repeat(1, minmax(0, 1fr));
-}
 
 .flex-col {
   flex-direction: column;
