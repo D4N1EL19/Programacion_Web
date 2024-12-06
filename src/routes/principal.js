@@ -1,9 +1,10 @@
-import { Router } from "express";
+import { json, Router } from "express";
 import pool from "../database.js";
 import multer from "multer";
 import fs from "fs";
 import path from "path";
 import { IMAGES_FOLDER } from "../index.js";
+import { PasswordHasher } from '../hasher.js';
 
 
 const storage = multer.diskStorage({
@@ -61,8 +62,26 @@ router.post("/logout", (req, res) => {
     });
 });
 
-router.get("/mantenimiento", isAuthenticated, (req, res) => {
-    res.render("partials/mantenimineto", {layout: "mantenimiento"})
+router.get("/mantenimiento", isAuthenticated, async(req, res) => {
+    const [paquetes] = await pool.query('SELECT * FROM Paquetes');
+    res.render("partials/mantenimineto", {layout: "mantenimiento", paquetes: paquetes})
+});
+
+router.post("/actualizarPaquete", async(req, res)=>{
+  const { id, periodo, meses, precio} = req.body;
+  const paquete = {
+    Plazo: periodo,
+    Meses: meses,
+    Precio: precio
+  };
+
+  try {
+    await pool.query("UPDATE Paquetes SET ? WHERE ID = ?", [paquete, id]);
+    res.json({ success: true, message: "Paquete actualizado correctamente" });
+  }catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: "Error al actualizar el paquete" });
+  }
 });
 
 router.post("/uploadImage", upload.single("file"), async(req, res)=>{
@@ -102,5 +121,63 @@ router.post("/uploadImage", upload.single("file"), async(req, res)=>{
         res.status(500).json({message: err.message});
     }
 });
+
+router.post('/agregarSuscripcion', async (req, res) => {
+  try {
+    const { 
+      nombres, apellidos, user, diocesis,
+      password, direccion, fecha_pago
+    } = req.body;
+
+    const [rows] = await pool.query('SELECT ID FROM Comunidades WHERE Nombre = ?', [diocesis]);
+    if (rows.length === 0) {
+      return res.status(404).json({ 
+        success: false, 
+        message: 'La diócesis no existe.' 
+      });
+    }
+
+    const comunidadID = rows[0].ID;
+
+    const nuevaParroquia = {
+      ID_Comunidad: comunidadID, 
+      Nombre: "Desconocido",
+      Fecha_fundacion: null,
+      Ciudad: "Desconocido",
+      Direccion: direccion
+    };
+
+    const [result] = await pool.query('INSERT INTO Parroquias SET ?', [nuevaParroquia]);
+    const lastInsertId = result.insertId;
+
+    const nombreCompleto = nombres + " " + apellidos; 
+    const pass = PasswordHasher.hashPassword(password); 
+
+    const nuevoUsuario = {
+      ID_Parroquia: lastInsertId,
+      Nombre: nombreCompleto,
+      Usuario: user,
+      Pass: pass,
+      Rol: "Administrador_Parroquial",
+      Fecha_Licencia: fecha_pago
+    };
+
+    await pool.query('INSERT INTO Usuarios SET ?', [nuevoUsuario]);
+
+    res.json({ 
+      message: "Formulario procesado correctamente. Suscripción subida.", 
+      success: true, 
+      usuarioID: result.insertId,
+      parroquiaID: lastInsertId
+    });
+  } catch (error) {
+    console.error('Error en la suscripción:', error);
+    res.status(500).json({ 
+      success: false, 
+      message: 'Ocurrió un error al procesar la solicitud.' 
+    });
+  }
+});
+
 
 export default router
