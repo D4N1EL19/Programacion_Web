@@ -1,47 +1,65 @@
 <main class="grid place-content-center">
-    <div class="text-center max-w-lg bg-white shadow-lg rounded-lg p-8">
-        <form action="/uploadImage" method="post" enctype="multipart/form-data">
-            <label for="descripcion">descripcion:</label>
-            <input type="text" id="descripcion" name="descripcion" required>
-            <br><br>
+    <div class="text-center max-w-5xl bg-gradient-to-r from-customGradientStart to-customGradientEnd shadow-lg rounded-lg p-8 m-8 ">
+        <form action="/uploadImage" method="post" enctype="multipart/form-data" class="flex gap-6 w-full">
+  <!-- Contenedor del file -->
+  <div class="w-1/3">
+    <label
+      for="file"
+      class="flex items-center justify-center w-full px-6 py-4 text-base font-medium text-white bg-indigo-600 rounded-lg shadow cursor-pointer hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+    >
+      Seleccionar Archivo
+    </label>
+    <input
+      type="file"
+      id="file"
+      name="file"
+      required
+      class="hidden"
+    />
+  </div>
 
-            <label for="link">Link: </label>
-            <input type="text" id="link" name="link" required>
-            <br><br>
+  <!-- Contenedor de los inputs -->
+  <div class="w-2/3 space-y-6">
+    <!-- Input de descripción -->
+    <div>
+      <label for="descripcion" class="block text-base font-medium text-gray-700">Descripción:</label>
+      <input
+        type="text"
+        id="descripcion"
+        name="descripcion"
+        required
+        class="mt-1 block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm text-base focus:ring-indigo-500 focus:border-indigo-500"
+      />
+    </div>
 
-            <label for="file">Subir Archivo:</label>
-            <input type="file" id="file" name="file" required>
-            <br><br>
+    <!-- Input de link -->
+    <div>
+      <label for="link" class="block text-base font-medium text-gray-700">Link:</label>
+      <input
+        type="text"
+        id="link"
+        name="link"
+        required
+        class="mt-1 block w-full px-4 py-3 rounded-lg border border-gray-300 shadow-sm text-base focus:ring-indigo-500 focus:border-indigo-500"
+      />
+    </div>
 
-            <button type="submit">Enviar</button>
-        </form>
+    <!-- Botón de envío -->
+    <button
+      type="submit"
+      class="w-full py-3 px-6 text-base font-medium text-white bg-indigo-600 rounded-lg shadow hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+    >
+      Enviar
+    </button>
+  </div>
+</form>
+
     </div >
       <!-- Contenedor principal -->
-  <div class="w-full max-w-4xl mt-6 p-6 bg-white rounded-lg shadow-md">
-    <!-- Sección de encabezado -->
-    <div class="flex justify-between items-center">
-      <button class="text-xl font-bold text-gray-600">
-        &#x2190;
-      </button>
-      <button class="bg-customGradientEnd text-white font-semibold py-2 px-6 rounded-lg hover:bg-teal-600">
-        Agregar
-      </button>
-    </div>
-    <!-- Tarjeta principal -->
-    <div class="mt-6 bg-gradient-to-r from-customGradientStart to-customGradientEnd p-6 rounded-lg text-center">
-      <div class="flex flex-col justify-center items-center">
-        <div class="bg-gray-100 rounded-lg w-16 h-16 flex items-center justify-center shadow-md">
-          <span class="text-xl font-bold text-gray-600">+</span>
-        </div>
-        <p class="mt-4 text-lg font-semibold text-gray-700">Introduce noticia</p>
-        <p class="text-sm text-gray-500 mt-1">Introduce imagen de referencia</p>
-        <p class="text-xs text-gray-400 mt-1">Crédito del autor</p>
-      </div>
-    </div>
-
-    <div class="text-center max-w-lg bg-white shadow-lg rounded-lg p-8 m-8">
+    <div class="text-center max-w-7xl bg-gradient-to-r from-customGradientStart to-customGradientEnd shadow-lg rounded-lg p-8 m-8 flex">
         {{#each paquetes}}
-            <form action="/actualizarPaquete" method="post">
+        <div class="bg-white p-6 m-6 rounded-lg text-center">
+            <form action="/actualizarPaquete" method="post" >
                 <input type="hidden" name="id" value="{{ID}}">
                 <label for="periodo">periodo:</label>
                 <input type="text" id="periodo" name="periodo" value="{{Plazo}}" required>
@@ -54,13 +72,13 @@
                 <br><br>
                 <button type="submit">Agregar</button>
             </form>
+        </div>
         {{/each}}
     </div>
 </main>
 
- <!-- Sección de paquetes -->
+ <!-- Sección de paquetes 
     <div class="grid grid-cols-3 gap-4 mt-6">
-      <!-- Paquete 1 -->
       <div class="bg-gradient-to-r from-customGradientEnd to-customGradientStart p-4 rounded-lg shadow-md text-center">
         <h3 class="text-lg font-semibold text-white">Paquete 1</h3>
         <p class="text-sm text-white mt-2">Periodo</p>
@@ -71,7 +89,6 @@
           Agregar
         </button>
       </div>
-      <!-- Paquete 2 -->
       <div class="bg-gradient-to-r from-customGradientEnd to-customGradientStart p-4 rounded-lg shadow-md text-center">
         <h3 class="text-lg font-semibold text-white">Paquete 2</h3>
         <p class="text-sm text-white mt-2">Periodo</p>
@@ -82,7 +99,6 @@
           Agregar
         </button>
       </div>
-      <!-- Paquete 3 -->
       <div class="bg-gradient-to-r from-customGradientEnd to-customGradientStart p-4 rounded-lg shadow-md text-center">
         <h3 class="text-lg font-semibold text-white">Paquete 3</h3>
         <p class="text-sm text-white mt-2">Periodo</p>
@@ -95,4 +111,16 @@
       </div>
     </div>
   </div>
-</body>
+
+
+    <div class="mt-6 bg-gradient-to-r from-customGradientStart to-customGradientEnd p-6 rounded-lg text-center">
+      <div class="flex flex-col justify-center items-center">
+        <div class="bg-gray-100 rounded-lg w-16 h-16 flex items-center justify-center shadow-md">
+          <span class="text-xl font-bold text-gray-600">+</span>
+        </div>
+        <p class="mt-4 text-lg font-semibold text-gray-700">Introduce noticia</p>
+        <p class="text-sm text-gray-500 mt-1">Introduce imagen de referencia</p>
+        <p class="text-xs text-gray-400 mt-1">Crédito del autor</p>
+      </div>
+    </div>
+  -->

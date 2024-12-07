@@ -39,7 +39,7 @@
 
 <section class="py-12 bg-white">
   <div class="container mx-auto text-center">
-    <h2 class="text-3xl font-bold font-Galada mb-8">Paquetes</h2>
+    <h2 class="text-3xl font-bold font-Galada mb-8" id="Paquetes">Paquetes</h2>
     {{#if paquetes}}
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {{#each paquetes}}
@@ -88,7 +88,7 @@
 
 
 <!-- Noticias -->
-<section class="py-12 bg-white">
+<section class="py-12 bg-white" id="Noticias">
   <div class="container mx-auto">
     <h2 class="text-3xl font-bold font-Galada text-center mb-6">Noticias</h2>
     {{#if noticias}}
@@ -97,12 +97,12 @@
         <!-- Imagen -->
         <div class="w-1/3 ">
           <img src="/uploads/{{Foto}}" alt="Noticia" 
-               class="rounded-lg w-full h-auto max-h-24 object-cover">
+               class="rounded-lg w-full h-auto object-cover">
         </div>
         <!-- Contenido y link -->
         <div class="w-2/3 flex flex-col justify-center">
           <!-- Texto centrado -->
-          <h3 class="text-lg font-Galada text-center mb-4">{{Contenido}}</h3>
+          <h3 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-Galada text-center mb-4">{{Contenido}}</h3>
           <!-- Link alineado abajo y a la derecha -->
           <p class="text-white text-sm italic font-Cutive  text-right mt-auto">{{Link}}</p>
         </div>
